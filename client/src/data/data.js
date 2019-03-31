@@ -26,31 +26,46 @@ class data extends Component{
     });
   }
 
+  handleSubmit(event){
+    alert('saved');
+  }
+
   render(){
     return (
-      <div>
-      <form>
-        <h3>User Information</h3>
-        <p>{this.state.username}</p>
-        <p>{this.state.password}</p>
-        <label>Username</label>
-        <input
-          name = "username"
-          type = "text"
-          value = {this.state.username}
-          onChange = {this.changeUserName}
-        />
-        <br />
-        <label>Password</label>
-        <input
-          name = "password"
-          type = "text"
-          value = {this.state.password}
-          onChange = {this.changePassWord}
-        />
-        <br />
-      </form>
-      </div>
+      <div className="container">
+         <div className="row">
+            <div className="col-12">
+               <div className="card" >
+                  <div className="card-header">
+                     <h3>User Information</h3>
+                  </div>
+                  <div className="card-body text-left">
+                     <form onSubmit={this.handleSubmit}>
+                        <p>{this.state.username}</p>
+                        <p>{this.state.password}</p>
+                        <label>Username</label>
+                        <input
+                           name = "username"
+                           type = "text"
+                           value = {this.state.username}
+                           onChange = {this.changeUserName}
+                           />
+                        <br />
+                        <label>Password</label>
+                        <input
+                           name = "password"
+                           type = "text"
+                           value = {this.state.password}
+                           onChange = {this.changePassWord}
+                           />
+                        <br />
+                        <input type="submit" value="Submit" class="btn btn-primary" />
+                     </form>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>      
     )
   }
 }
