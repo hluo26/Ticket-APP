@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Form } from 'react-form';
 
-class data extends Component{
+class LoginPage extends Component{
   constructor(props){
     super(props);
     this.state = {
@@ -65,9 +65,9 @@ class data extends Component{
                </div>
             </div>
          </div>
-      </div>      
+      </div>
     )
   }
 }
 
-export default data;
+export default LoginPage;
