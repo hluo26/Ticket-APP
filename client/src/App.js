@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import NavBar from './navigation/Navbar';
-import LoginPage from './auth/LoginPage';
+import Welcome from './WelcomePage';
 
 class App extends Component {
   render() {
     return (
       <div>
       <NavBar />
-        <LoginPage />
+        <Welcome />
       </div>
     );
   }
