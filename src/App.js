@@ -63,6 +63,9 @@ function Topics({ match }) {
         <li>
           <Link to={`${match.url}/props-v-state`}>Props v. State</Link>
         </li>
+          <li>
+              <Link to={`${match.url}/:id`}>ID</Link>
+      </li>
       </ul>
 
       <Route path={`${match.path}/:id`} component={Topic} />
