@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
-import InputBase from '@material-ui/core/InputBase';
-import Badge from '@material-ui/core/Badge';
-import MenuItem from '@material-ui/core/MenuItem';
-import Menu from '@material-ui/core/Menu';
+import AppBar from '@material-ui/core/AppBar/index';
+import Toolbar from '@material-ui/core/Toolbar/index';
+import IconButton from '@material-ui/core/IconButton/index';
+import Typography from '@material-ui/core/Typography/index';
+import InputBase from '@material-ui/core/InputBase/index';
+import Badge from '@material-ui/core/Badge/index';
+import MenuItem from '@material-ui/core/MenuItem/index';
+import Menu from '@material-ui/core/Menu/index';
 import { fade } from '@material-ui/core/styles/colorManipulator';
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles/index';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
@@ -168,7 +168,7 @@ class PrimarySearchAppBar extends React.Component {
           <Toolbar>
             
             <Typography className={classes.title} variant="h6" color="inherit" noWrap>
-              Material-UI
+              Home
             </Typography>
             <div className={classes.search}>
               <div className={classes.searchIcon}>

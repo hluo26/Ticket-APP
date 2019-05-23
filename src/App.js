@@ -1,39 +1,42 @@
 import React, { Component } from 'react';
-import NavBar from './navigation/Navbar';
-import Welcome from './WelcomePage';
-import PrimarySearchAppBar from './SearchBar';
-import AuthExample from './auth/Auth';
+import PrimarySearchAppBar from './navigation/SearchBar';
+import Container from 'react-bootstrap/Container';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 import { BrowserRouter as Router, Route, Link, Redirect, withRouter } from "react-router-dom";
 
 function App() {
   return (
     <Router>
-      <NavBar />
       <PrimarySearchAppBar/>
       <br/>
       <br/>
       <div>
-        <Header />
-        <Route exact path="/" component={Home} />
-        <Route path="/about" component={About} />
-        <Route path="/topics" component={Topics} />
+              <Row>
+              <Col md="auto">
+                  <Header />
+                  <AuthButton />
+                  <ul>
+                      <li>
+                          <Link to="/public">Public Page</Link>
+                      </li>
+                      <li>
+                          <Link to="/protected">Protected Page</Link>
+                      </li>
+                  </ul>
+              </Col>
+              <Col>
+                  <Container>
+                      <Route exact path="/" component={Home} />
+                      <Route path="/about" component={About} />
+                      <Route path="/topics" component={Topics} />
+                      <Route path="/public" component={Public} />
+                      <Route path="/login" component={Login} />
+                      <PrivateRoute path="/protected" component={Protected} />
+                  </Container>
+              </Col>
+              </Row>
       </div>
-
-      <div>
-        <AuthButton />
-        <ul>
-          <li>
-            <Link to="/public">Public Page</Link>
-          </li>
-          <li>
-            <Link to="/protected">Protected Page</Link>
-          </li>
-        </ul>
-        <Route path="/public" component={Public} />
-        <Route path="/login" component={Login} />
-        <PrivateRoute path="/protected" component={Protected} />
-      </div>
-      
     </Router>
     
   );
@@ -64,7 +67,7 @@ function Topics({ match }) {
           <Link to={`${match.url}/props-v-state`}>Props v. State</Link>
         </li>
           <li>
-              <Link to={`${match.url}/:id`}>ID</Link>
+              <Link to={`${match.url}/id`}>ID</Link>
       </li>
       </ul>
 
