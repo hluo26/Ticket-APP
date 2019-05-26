@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import LongTextSnackbar from './SnackBar.js';
 import AppBar from '@material-ui/core/AppBar/index';
 import Toolbar from '@material-ui/core/Toolbar/index';
 import IconButton from '@material-ui/core/IconButton/index';
@@ -91,6 +92,31 @@ class PrimarySearchAppBar extends React.Component {
   state = {
     anchorEl: null,
     mobileMoreAnchorEl: null,
+    value: '',
+    snackBarOpen: false
+  };
+
+  handleInputChange = event => {
+    if (event.charCode === 13) {
+      alert('Enter... (KeyPress, use charCode)');
+    }
+    if (event.keyCode === 13) {
+      alert('Enter... (KeyDown, use keyCode)');
+    }
+    if(event.keyCode === 13 && event.target.value === '') {
+      this.setState({
+        value: event.target.value,
+        snackBarOpen: true
+      });
+    } else {
+      const query = event.target.value;
+      console.log(query);
+      this.setState({value:query});
+    }
+  };
+
+  handleCloseSnackBar = () => {
+    this.setState({snackBarOpen:false});
   };
 
   handleProfileMenuOpen = event => {
@@ -180,7 +206,10 @@ class PrimarySearchAppBar extends React.Component {
                   root: classes.inputRoot,
                   input: classes.inputInput,
                 }}
+                value = {this.state.value}
+                onChange = {this.handleInputChange}
               />
+              <LongTextSnackbar open={this.state.snackBarOpen} onClose={this.handleCloseSnackBar} />
             </div>
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
