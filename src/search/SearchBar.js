@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import LongTextSnackbar from './SnackBar.js';
 import AppBar from '@material-ui/core/AppBar/index';
 import Toolbar from '@material-ui/core/Toolbar/index';
 import IconButton from '@material-ui/core/IconButton/index';
@@ -92,32 +91,23 @@ class PrimarySearchAppBar extends React.Component {
   state = {
     anchorEl: null,
     mobileMoreAnchorEl: null,
-    value: '',
-    snackBarOpen: false
+    value: ''
   };
 
   handleInputChange = event => {
-    if (event.charCode === 13) {
-      alert('Enter... (KeyPress, use charCode)');
-    }
-    if (event.keyCode === 13) {
-      alert('Enter... (KeyDown, use keyCode)');
-    }
-    if(event.keyCode === 13 && event.target.value === '') {
-      this.setState({
-        value: event.target.value,
-        snackBarOpen: true
-      });
-    } else {
-      const query = event.target.value;
-      console.log(query);
-      this.setState({value:query});
+    const query = event.target.value;
+    this.setState({value:query});
+  };
+
+  handleKeyPress = event => {
+    if(event.charCode === 13 ) {
+      console.log('submitting ' + this.state.value);
     }
   };
 
-  handleCloseSnackBar = () => {
-    this.setState({snackBarOpen:false});
-  };
+  getData = event => {
+    
+  }
 
   handleProfileMenuOpen = event => {
     this.setState({ anchorEl: event.currentTarget });
@@ -208,8 +198,8 @@ class PrimarySearchAppBar extends React.Component {
                 }}
                 value = {this.state.value}
                 onChange = {this.handleInputChange}
+                onKeyPress={this.handleKeyPress}
               />
-              <LongTextSnackbar open={this.state.snackBarOpen} onClose={this.handleCloseSnackBar} />
             </div>
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>

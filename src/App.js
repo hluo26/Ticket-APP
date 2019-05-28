@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PrimarySearchAppBar from './navigation/SearchBar';
+import NavigationBar from './Navigation';
 import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
@@ -8,7 +8,7 @@ import { BrowserRouter as Router, Route, Link, Redirect, withRouter } from "reac
 function App() {
   return (
     <Router>
-      <PrimarySearchAppBar/>
+      <NavigationBar/>
       <br/>
       <br/>
       <div>
@@ -27,7 +27,7 @@ function App() {
               </Col>
               <Col>
                   <Container>
-                      <Route exact path="/" component={Home} />
+                      <Route exact path="/" component={Flight} />
                       <Route path="/about" component={About} />
                       <Route path="/topics" component={Topics} />
                       <Route path="/public" component={Public} />
@@ -42,8 +42,8 @@ function App() {
   );
 }
 
-function Home() {
-  return <h2>Home</h2>;
+function Flight() {
+  return <h2>Flight</h2>;
 }
 
 function About() {
@@ -85,7 +85,7 @@ function Header() {
   return (
     <ul>
       <li>
-        <Link to="/">Home</Link>
+        <Link to="/">Flight</Link>
       </li>
       <li>
         <Link to="/about">About</Link>
