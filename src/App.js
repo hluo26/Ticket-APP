@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import NavigationBar from './Navigation';
+import Flight from './pages/Flight';
+import Hotel from './pages/Hotel';
+import Taxi from './pages/Taxi';
 import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
@@ -28,8 +31,8 @@ function App() {
               <Col>
                   <Container>
                       <Route exact path="/" component={Flight} />
-                      <Route path="/about" component={About} />
-                      <Route path="/topics" component={Topics} />
+                      <Route path="/hotel" component={Hotel} />
+                      <Route path="/taxi" component={Taxi} />
                       <Route path="/public" component={Public} />
                       <Route path="/login" component={Login} />
                       <PrivateRoute path="/protected" component={Protected} />
@@ -42,44 +45,6 @@ function App() {
   );
 }
 
-function Flight() {
-  return <h2>Flight</h2>;
-}
-
-function About() {
-  return <h2>About</h2>;
-}
-
-function Topic({ match }) {
-  return <h3>Requested Param: {match.params.id}</h3>;
-}
-
-function Topics({ match }) {
-  return (
-    <div>
-      <h2>Topics</h2>
-
-      <ul>
-        <li>
-          <Link to={`${match.url}/components`}>Components</Link>
-        </li>
-        <li>
-          <Link to={`${match.url}/props-v-state`}>Props v. State</Link>
-        </li>
-          <li>
-              <Link to={`${match.url}/id`}>ID</Link>
-      </li>
-      </ul>
-
-      <Route path={`${match.path}/:id`} component={Topic} />
-      <Route
-        exact
-        path={match.path}
-        render={() => <h3>Please select a topic.</h3>}
-      />
-    </div>
-  );
-}
 
 function Header() {
   return (
@@ -88,10 +53,10 @@ function Header() {
         <Link to="/">Flight</Link>
       </li>
       <li>
-        <Link to="/about">About</Link>
+        <Link to="/hotel">Hotel</Link>
       </li>
       <li>
-        <Link to="/topics">Topics</Link>
+        <Link to="/taxi">Taxi</Link>
       </li>
     </ul>
   );
